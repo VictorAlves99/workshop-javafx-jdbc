@@ -2,26 +2,31 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class Departamento implements Serializable {
+public class Departamento implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	private Integer id;
+	
+	private int id;
 	private String nome;
 	
 	public Departamento() {
+		
 	}
-
-	public Departamento(Integer id, String nome) {
+	
+	public Departamento(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
+	
+	public Departamento(String nome) {
+		this.nome = nome;
+	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -37,7 +42,7 @@ public class Departamento implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -50,16 +55,14 @@ public class Departamento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Departamento other = (Departamento) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Departmento [id=" + id + ", nome=" + nome + "]";
+		return "Departamento [id=" + id + ", nome=" + nome + "]";
 	}
+	
 }
