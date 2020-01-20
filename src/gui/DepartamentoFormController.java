@@ -38,9 +38,6 @@ public class DepartamentoFormController implements Initializable {
 	private TextField txtNome;
 
 	@FXML
-	private Label labelErroId;
-
-	@FXML
 	private Label labelErroNome;
 
 	@FXML
