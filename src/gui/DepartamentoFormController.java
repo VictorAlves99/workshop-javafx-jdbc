@@ -3,7 +3,9 @@ package gui;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import db.DbException;
 import gui.listeners.DataChangeListener;
@@ -18,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.entities.Departamento;
+import model.exceptions.ValidationException;
 import model.services.DepartamentoService;
 
 public class DepartamentoFormController implements Initializable {
@@ -74,6 +77,8 @@ public class DepartamentoFormController implements Initializable {
 			Utils.currentStage(event).close();
 		} catch (DbException e) {
 			Alerts.showAlert("Erro ao salvar departamento", null, e.getMessage(), AlertType.ERROR);
+		} catch(ValidationException e) {
+			setMensagensDeErro(e.getErros());
 		}
 	}
 
@@ -109,9 +114,28 @@ public class DepartamentoFormController implements Initializable {
 	private Departamento getFormData() {
 		Departamento dep = new Departamento();
 
+		ValidationException exception = new ValidationException("Erro de validação");
+		
 		dep.setId(Utils.tryParseToInt(txtId.getText()));
+		
+		if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
+			exception.addErro("nome", "Campo não pode ser vazio");
+		}
+		
 		dep.setNome(txtNome.getText());
 
+		if(exception.getErros().size() > 0) {
+			throw exception;
+		}
+		
 		return dep;
+	}
+	
+	private void setMensagensDeErro(Map<String,String> erros) {
+		Set<String> fields = erros.keySet();
+		
+		if(fields.contains("nome")) {
+			labelErroNome.setText(erros.get("nome"));
+		}
 	}
 }
