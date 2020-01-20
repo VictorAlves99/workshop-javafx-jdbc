@@ -62,7 +62,7 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 			
 		} catch (IOException e) {
-			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("IO Exception", "Erro carregando a View", e.getMessage(), AlertType.ERROR);
 		}
 	}
 	
@@ -82,8 +82,9 @@ public class MainViewController implements Initializable {
 			ListagemDepartamentoController controller = loader.getController();
 			controller.setDepartamentoService(new DepartamentoService());
 			controller.updateTableView();
+			
 		} catch (IOException e) {
-			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("IO Exception", "Erro carregando a View", e.getMessage(), AlertType.ERROR);
 		}
 	}
 }
