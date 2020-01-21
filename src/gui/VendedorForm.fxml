@@ -69,6 +69,7 @@
             <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <DatePicker fx:id="dpDataNascimento" prefHeight="25.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="txtSalarioBase" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboBoxDepartamento" maxWidth="1.7976931348623157E308" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label fx:id="labelErroNome" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="12.0" />
